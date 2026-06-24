@@ -6,6 +6,6 @@
   "editor.suggest.insertMode": "insert",
   "editor.acceptSuggestionOnEnter": "off",
   "editor.parameterHints.enabled": false,
-  "editor.wordBasedSuggestions": false,
+  "editor.wordBasedSuggestions": "off",
   "github.copilot.enable": false
 }

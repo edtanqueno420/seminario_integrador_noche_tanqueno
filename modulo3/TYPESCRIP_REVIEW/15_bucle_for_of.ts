@@ -21,3 +21,16 @@ console.log(`Total: ${total}€`);
 for (const [indice, nombre] of nombresa.entries()) {
   console.log(`${indice + 1}. ${nombre}`);
 }
+
+
+const temps: number[] = [18, 22, 25, 30, 19, 27];
+let max = 0;
+
+// TypeScript sabe que 'nombre' es string
+for (const temp of temps) {
+  if (temp > max) {
+    max = temp;
+  }
+  console.log(max);
+  // nombre.toUpperCase() ✅ — TypeScript sabe que es string
+}
