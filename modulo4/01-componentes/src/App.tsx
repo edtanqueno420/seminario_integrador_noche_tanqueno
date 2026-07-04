@@ -1,8 +1,17 @@
 // src/App.tsx
 
+
+import UserProfileForm from './useState/UserProfileForm'
+import TaskManager from './useState/TaskManager'
+import DocumentTitle from './useEffect/DocumentTitle'
+import FetchUser from './useEffect/FetchUser'
+import AutoFocusForm from './useRef/AutoFocusForm'
+import InlineEditor from './useRef/InlineEditor'
+/*
 import WelcomeBanner       from './components/WelcomeBanner'
 import UserGreeting        from './components/UserGreeting'
-/*import CurrentDateDisplay  from './components/CurrentDateDisplay'
+import DigitalCounter from './useState/DigitalCounter'
+import CurrentDateDisplay  from './components/CurrentDateDisplay'
 import ColoredBox          from './components/ColoredBox'
 import ConditionalGreeting from './components/ConditionalGreeting'
 import FruitList           from './components/FruitList'
@@ -30,7 +39,7 @@ import UserProfileCard     from './components/UserProfileCard'
 // │  12  ProductCatalogList  — lista con renderizado condicional de items   │
 // │  13  UserProfileCard     — ejercicio: props complejas + rol             │
 // └──────────────────────────────────────────────────────────────────────────┘
-const PASO = 2
+const PASO = 20
 
 const fruits = [
   { name: 'Manzana', emoji: '🍎', calories: 52 },
@@ -47,9 +56,9 @@ const catalog = [
 
 export default function App() {
   const content =
-    PASO ===  1 ? <WelcomeBanner /> :
+    /*PASO ===  1 ? <WelcomeBanner /> :
     PASO ===  2 ? <UserGreeting name="Edison Tanqueño" occupation="Desarrollador Backend" /> :
-    /*PASO ===  3 ? <CurrentDateDisplay /> :
+    PASO ===  3 ? <CurrentDateDisplay /> :
     PASO ===  4 ? (
       <div style={{ display: 'flex', gap: 12 }}>
         <ColoredBox color="#0070f3" label="Primary" />
@@ -103,7 +112,23 @@ export default function App() {
         skills={['TypeScript', 'React', 'Node.js']}
         bio="Desarrolladora fullstack con 5 años de experiencia."
       />
-    ) */
+    ) 
+    PASO === 14 ? <DigitalCounter initialValue={5+} step={5} label="Contador digital" /> :
+    */PASO === 15 ? <UserProfileForm /> :
+    PASO === 16 ? <TaskManager /> :
+
+
+    //Hooks UseEffect
+    PASO === 17 ? <DocumentTitle /> :
+    PASO === 18 ? <FetchUser /> :
+
+    //Hooks UseRef
+    PASO === 19 ? <AutoFocusForm /> :
+    PASO === 20 ? <InlineEditor /> :
+
+
+
+
     <p style={{ color: '#e00' }}>Paso {PASO}: crea el componente primero</p>
 
   return (
