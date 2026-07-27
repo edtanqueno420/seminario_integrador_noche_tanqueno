@@ -1,0 +1,38 @@
+interface OperarioSaludoProps {
+  name: string
+  occupation?: string
+}
+
+export default function CP_OperarioSaludo({ name, occupation }: OperarioSaludoProps) {
+  const initials = name
+    .split(' ')
+    .map((w) => w[0])
+    .join('')
+    .toUpperCase()
+
+  return (
+    <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+      <div
+        style={{
+          width: 44,
+          height: 44,
+          borderRadius: '50%',
+          background: '#27ae60',
+          color: '#fff',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          fontWeight: 600,
+        }}
+      >
+        {initials}
+      </div>
+      <div>
+        <p style={{ margin: 0, fontWeight: 600 }}>Operario: {name}</p>
+        {occupation && (
+          <p style={{ margin: 0, fontSize: 13, color: '#888' }}>{occupation}</p>
+        )}
+      </div>
+    </div>
+  )
+}

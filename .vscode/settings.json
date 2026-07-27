@@ -10,6 +10,6 @@
   "editor.parameterHints.enabled": false,
   "editor.acceptSuggestionOnEnter": "off",
   "editor.inlineSuggest.enabled": false,
-  "editor.hover.enabled": false,
-  "editor.wordBasedSuggestions": false
+  "editor.hover.enabled": "off",
+  "editor.wordBasedSuggestions": "off"
 }

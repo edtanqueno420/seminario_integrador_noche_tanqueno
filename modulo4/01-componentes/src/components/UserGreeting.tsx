@@ -19,13 +19,12 @@ export default function UserGreeting({ name, occupation }: UserGreetingProps) {
           width: 44,
           height: 44,
           borderRadius: '50%',
-          background: '#e11d48',
+          background: '#6366f1',
           color: '#fff',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
           fontWeight: 600,
-          
         }}
       >
         {initials}

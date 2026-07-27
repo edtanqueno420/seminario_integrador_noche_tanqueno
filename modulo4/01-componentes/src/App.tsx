@@ -1,28 +1,26 @@
 // src/App.tsx
+import WelcomeBanner from './components/WelcomeBanner'
+import UserGreeting from './components/UserGreeting'
+import DigitalCounter from './use-state/DigitalCounter'
+import UserProfileForm from './use-state/UserProfileForm'
+import TaskManager from './use-state/TaskManager'
+import DocumentTitle from './use-effect/DocumentTitle'
+import FetchUser from './use-effect/FetchUser'
+import AutoFocusForm from './use-reft/AutoFocusForm'
+import InlineEditor from './use-reft/InlineEditor'
+import BasicCounter from './use-reducer/BasicCounter'
+import RegistrationForm from './use-reducer/RegistrationForm'
+import LoginForm from './use-context/LoginForm'
+import UserBadge from './use-context/UserBadge'
+import AppHeader from './use-context/AppHeader'
+import { useAuth } from './context/AuthContext'
+import { ThemeProvider } from './context/ThemeContext'
+import PrimeSieve from './use-memo/PrimeSieve'
+import FilteredCatalog from './use-memo/FilteredCatalog'
+import MemoizedList from './use-callback/MemoizedList'
+import SearchWithFetch from './use-callback/SearchWithFetch'
+import ThemeSelector from './customhooks/ThemeSelector'
 
-
-import UserProfileForm from './useState/UserProfileForm'
-import TaskManager from './useState/TaskManager'
-import DocumentTitle from './useEffect/DocumentTitle'
-import FetchUser from './useEffect/FetchUser'
-import AutoFocusForm from './useRef/AutoFocusForm'
-import InlineEditor from './useRef/InlineEditor'
-/*
-import WelcomeBanner       from './components/WelcomeBanner'
-import UserGreeting        from './components/UserGreeting'
-import DigitalCounter from './useState/DigitalCounter'
-import CurrentDateDisplay  from './components/CurrentDateDisplay'
-import ColoredBox          from './components/ColoredBox'
-import ConditionalGreeting from './components/ConditionalGreeting'
-import FruitList           from './components/FruitList'
-import PriceTag            from './components/PriceTag'
-import StatusBadge         from './components/StatusBadge'
-import MiniProfileCard     from './components/MiniProfileCard'
-import SimpleInfoTable     from './components/SimpleInfoTable'
-import ProductCard         from './components/ProductCard'
-import ProductCatalogList  from './components/ProductCatalogList'
-import UserProfileCard     from './components/UserProfileCard'
-*/
 // ┌──────────────────────────────────────────────────────────────────────────┐
 // │  Cambia PASO y guarda (Ctrl+S) para navegar entre componentes.          │
 // │   1  WelcomeBanner       — banner estático sin props                    │
@@ -39,7 +37,7 @@ import UserProfileCard     from './components/UserProfileCard'
 // │  12  ProductCatalogList  — lista con renderizado condicional de items   │
 // │  13  UserProfileCard     — ejercicio: props complejas + rol             │
 // └──────────────────────────────────────────────────────────────────────────┘
-const PASO = 20
+const PASO = 91
 
 const fruits = [
   { name: 'Manzana', emoji: '🍎', calories: 52 },
@@ -55,9 +53,10 @@ const catalog = [
 ]
 
 export default function App() {
+  const { state } = useAuth()
   const content =
     /*PASO ===  1 ? <WelcomeBanner /> :
-    PASO ===  2 ? <UserGreeting name="Edison Tanqueño" occupation="Desarrollador Backend" /> :
+    PASO ===  2 ? <UserGreeting name="Ana García" occupation="Desarrolladora Frontend" /> :
     PASO ===  3 ? <CurrentDateDisplay /> :
     PASO ===  4 ? (
       <div style={{ display: 'flex', gap: 12 }}>
@@ -112,28 +111,49 @@ export default function App() {
         skills={['TypeScript', 'React', 'Node.js']}
         bio="Desarrolladora fullstack con 5 años de experiencia."
       />
-    ) 
-    PASO === 14 ? <DigitalCounter initialValue={5+} step={5} label="Contador digital" /> :
-    */PASO === 15 ? <UserProfileForm /> :
-    PASO === 16 ? <TaskManager /> :
-
-
-    //Hooks UseEffect
-    PASO === 17 ? <DocumentTitle /> :
-    PASO === 18 ? <FetchUser /> :
-
-    //Hooks UseRef
-    PASO === 19 ? <AutoFocusForm /> :
-    PASO === 20 ? <InlineEditor /> :
-
-
-
+    ) :*/
+    //Hooks: state
+    PASO === 20 ? <DigitalCounter initialValue={10} step={3} label="Cantidad de servidores" /> :
+    PASO === 21 ? <UserProfileForm /> :
+    PASO === 22 ? <TaskManager /> :
+    //Hooks: effect
+    PASO === 30 ? <DocumentTitle /> :
+    PASO === 31 ? <FetchUser /> :
+    //Hooks: ref
+    PASO === 40 ? <AutoFocusForm /> :
+    PASO === 41 ? <InlineEditor /> :
+    //Hooks: reducer
+    PASO === 50 ? <BasicCounter /> :
+    PASO === 51 ? <RegistrationForm /> :
+    //Hooks: context
+    PASO === 60 ? <ThemeProvider><UserBadge /></ThemeProvider> :
+    PASO === 61 ? <UserBadge /> :
+    PASO === 62 ? <LoginForm /> :
+    PASO === 63 ? <AppHeader /> :
+    //Hooks: memo
+    PASO === 70 ? <PrimeSieve /> :
+    PASO === 71 ? <FilteredCatalog /> :
+    //Hooks: callback
+    PASO === 80 ? <MemoizedList /> :
+    PASO === 81 ? <SearchWithFetch /> :
+    //Hooks: customs hooks
+    PASO === 90 ? <ThemeSelector /> :
+    PASO === 91 ? <useLocalStorage /> :
 
     <p style={{ color: '#e00' }}>Paso {PASO}: crea el componente primero</p>
 
   return (
-    <main style={{ maxWidth: 540, margin: '40px auto', fontFamily: 'sans-serif', padding: '0 16px' }}>
-      {content}
+    <main style={{ maxWidth: 600, margin: '40px auto', fontFamily: 'sans-serif', padding: '0 16px' }}>
+      {PASO === 64 ? content : (
+        <>
+          {state.user && (
+            <p style={{ marginBottom: 16, fontSize: 14, color: '#6b7280' }}>
+              Sesión activa: <strong>{state.user.name}</strong>
+            </p>
+          )}
+          {content}
+        </>
+      )}
     </main>
   )
 }
